@@ -8,7 +8,7 @@
 #include <string>
 #include "cyclus.h"
 
-namespace cyclass {
+namespace cybca {
 
     /// FuelFab takes in 2 streams of material and mixes them in ratios in order to
     /// supply material that matches some neutronics properties of reqeusted
@@ -171,7 +171,7 @@ namespace cyclass {
 
     double AtomToMassFrac(double atomfrac, cyclus::Composition::Ptr c1, cyclus::Composition::Ptr c2);
     
-} // namespace cyclass
+} // namespace cybca
 
 
 #endif  // CYCLASS_SRC_FUEL_FAB_H_

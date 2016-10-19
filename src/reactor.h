@@ -4,7 +4,7 @@
 #include "cyclus.h"
 #include "CLASSAdaptator.h"
 
-namespace cyclass {
+namespace cybca {
 
     /// Reactor is a simple, general reactor based on static compositional
     /// transformations to model fuel burnup.  The user specifies a set of input
@@ -200,6 +200,13 @@ namespace cyclass {
 "received as each particular input commodity (same order)." \
 }
         std::vector<std::string> fuel_outcommods;
+
+#pragma cyclus var { \
+"default": 1, \
+"doc": "Over-discharg parameter.",	\
+"uilabel": "odisc", \
+}
+        double over_discharge;
 
 #pragma cyclus var { \
 "doc": "Mass (kg) of a single assembly.",	\
@@ -399,6 +406,6 @@ namespace cyclass {
         std::set<std::string> uniq_outcommods_;
     };
     
-} // namespace cyclass
+} // namespace cybca
 
 #endif  // CYCLASS_SRC_REACTOR_H_

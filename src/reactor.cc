@@ -15,7 +15,7 @@ typedef std::map<Nuc, double> CompMap;
 //#define cyDBGL		std::cout << __FILE__ << " : " << __LINE__ << " [" << __FUNCTION__ << "]" << std::endl;
 #define cyDBGL		;
 
-namespace cyclass {
+namespace cybca {
 
   Reactor::Reactor(cyclus::Context* ctx)
   : cyclus::Facility(ctx),
@@ -44,29 +44,29 @@ namespace cyclass {
 
   }
 
-#pragma cyclus def clone cyclass::Reactor
+#pragma cyclus def clone cybca::Reactor
 
-#pragma cyclus def schema cyclass::Reactor
+#pragma cyclus def schema cybca::Reactor
 
-#pragma cyclus def annotations cyclass::Reactor
+#pragma cyclus def annotations cybca::Reactor
 
-#pragma cyclus def infiletodb cyclass::Reactor
+#pragma cyclus def infiletodb cybca::Reactor
 
-#pragma cyclus def snapshot cyclass::Reactor
+#pragma cyclus def snapshot cybca::Reactor
 
-#pragma cyclus def snapshotinv cyclass::Reactor
+#pragma cyclus def snapshotinv cybca::Reactor
 
-#pragma cyclus def initinv cyclass::Reactor
+#pragma cyclus def initinv cybca::Reactor
 
   //________________________________________________________________________
   void Reactor::InitFrom(Reactor* m) {
-#pragma cyclus impl initfromcopy cyclass::Reactor
+#pragma cyclus impl initfromcopy cybca::Reactor
     cyclus::toolkit::CommodityProducer::Copy(m);
   }
 
   //________________________________________________________________________
   void Reactor::InitFrom(cyclus::QueryableBackend* b) {
-#pragma cyclus impl initfromdb cyclass::Reactor
+#pragma cyclus impl initfromdb cybca::Reactor
 
     namespace tk = cyclus::toolkit;
     tk::CommodityProducer::Add(tk::Commodity(power_name),
@@ -221,7 +221,7 @@ namespace cyclass {
         CompMap fertil_comp;
         fertil_comp.insert(std::pair<Nuc, double>(922350000,0.25));
         fertil_comp.insert(std::pair<Nuc, double>(922380000,99.75));
-        fertil_comp =  cyclass::NormalizeComp(fertil_comp);
+        fertil_comp =  cybca::NormalizeComp(fertil_comp);
 
         Composition::Ptr fissil_stream = Composition::CreateFromAtom(fissil_comp);
         Composition::Ptr fertil_stream = Composition::CreateFromAtom(fertil_comp);
@@ -408,7 +408,7 @@ namespace cyclass {
       cyDBGL
       cyclus::Composition::Ptr compo = old[i]->comp();
       cyDBGL
-      old[i]->Transmute( MyCLASSAdaptator->GetCompAfterIrradiation( compo, power, mass , burnup)  );
+      old[i]->Transmute( MyCLASSAdaptator->GetCompAfterIrradiation( compo, power, mass * over_discharge , burnup)  );
       cyDBGL
     }
     cyDBGL
@@ -459,7 +459,7 @@ namespace cyclass {
   std::string Reactor::fuel_incommod(Material::Ptr m) {
     int i = res_indexes[m->obj_id()];
     if (i >= fuel_incommods.size()) {
-      throw KeyError("cyclass::Reactor - no incommod for material object");
+      throw KeyError("cybca::Reactor - no incommod for material object");
     }
     return fuel_incommods[i];
   }
@@ -468,7 +468,7 @@ namespace cyclass {
   std::string Reactor::fuel_outcommod(Material::Ptr m) {
     int i = res_indexes[m->obj_id()];
     if (i >= fuel_outcommods.size()) {
-      throw KeyError("cyclass::Reactor - no outcommod for material object");
+      throw KeyError("cybca::Reactor - no outcommod for material object");
     }
     return fuel_outcommods[i];
   }
@@ -491,7 +491,7 @@ namespace cyclass {
       }
     }
     throw ValueError(
-                     "cyclass::Reactor - received unsupported incommod material");
+                     "cybca::Reactor - received unsupported incommod material");
   }
 
   //________________________________________________________________________
@@ -536,4 +536,4 @@ namespace cyclass {
     return new Reactor(ctx);
   }
 
-}  // namespace cyclass
+}  // namespace cybca

@@ -13,7 +13,7 @@ using pyne::simple_xs;
 std::cout << std::setprecision(17) << __FILE__ << ":" << __LINE__ \
 << ": " #X " = " << X << "\n"
 
-namespace cyclass {
+namespace cybca {
 
   class FissConverter : public cyclus::Converter<cyclus::Material> {
   public:
@@ -204,7 +204,7 @@ namespace cyclass {
       } else if (req_inventories_[req] == "fiss") {
         fiss.Push(m);
       } else {
-        throw cyclus::ValueError("cyclass::FuelFab was overmatched on requests");
+        throw cyclus::ValueError("cybca::FuelFab was overmatched on requests");
       }
     }
 
@@ -422,4 +422,4 @@ cyclus::CapacityConstraint<Material> fissc(std::max(fiss.quantity(), 1e-10));
     return mass1 / (mass1 + mass2);
   }
 
-}  // namespace cyclass
+}  // namespace cybca

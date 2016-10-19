@@ -30,7 +30,7 @@ using cyclus::Composition;
 #define cyDBGL ;
 
 
-namespace cyclass {
+namespace cybca {
 
 
 
@@ -470,4 +470,4 @@ namespace cyclass {
   
   
   
-} // namespace cyclass
+} // namespace cybca

@@ -11,7 +11,7 @@ IF(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR})
     message(FATAL_ERROR "in-source build detected")
 ENDIF()
 
-PROJECT(cyclass)
+PROJECT(cybca)
 
  # Vcheck for and enable c++11 support
 INCLUDE(CheckCXXCompilerFlag)

@@ -12,7 +12,7 @@ using cyclus::QueryResult;
 using cyclus::Cond;
 using cyclus::toolkit::MatQuery;
 
-namespace cyclass {
+namespace cybca {
 namespace fuelfabtests {
 
 Composition::Ptr c_uox() {
@@ -90,7 +90,7 @@ TEST(FuelFabTests, FissRecipe) {
      ;
 
   int simdur = 1;
-  cyclus::MockSim sim(cyclus::AgentSpec(":cyclass:FuelFab"), config, simdur);
+  cyclus::MockSim sim(cyclus::AgentSpec(":cybca:FuelFab"), config, simdur);
   sim.AddSource("stream1").Finalize();
   sim.AddRecipe("spentuox", c_pustream());
   sim.AddRecipe("natu", c_natu());
@@ -124,7 +124,7 @@ TEST(FuelFabTests, MultipleFissStreams) {
      ;
 
   int simdur = 1;
-  cyclus::MockSim sim(cyclus::AgentSpec(":cyclass:FuelFab"), config, simdur);
+  cyclus::MockSim sim(cyclus::AgentSpec(":cybca:FuelFab"), config, simdur);
   sim.AddSource("stream1").recipe("spentuox").capacity(1).Finalize();
   sim.AddSource("stream2").recipe("spentuox").capacity(1).Finalize();
   sim.AddSource("stream3").recipe("spentuox").capacity(1).Finalize();
@@ -166,7 +166,7 @@ TEST(FuelFabTests, FissStreamPrefs) {
      ;
 
   int simdur = 1;
-  cyclus::MockSim sim(cyclus::AgentSpec(":cyclass:FuelFab"), config, simdur);
+  cyclus::MockSim sim(cyclus::AgentSpec(":cybca:FuelFab"), config, simdur);
   sim.AddSource("stream1").recipe("spentuox").capacity(1).Finalize();
   sim.AddSource("stream2").recipe("spentuox").capacity(1).Finalize();
   sim.AddSource("stream3").recipe("spentuox").capacity(1).Finalize();
@@ -211,7 +211,7 @@ TEST(FuelFabTests, ZeroThroughput) {
      ;
 
   int simdur = 10;
-  cyclus::MockSim sim(cyclus::AgentSpec(":cyclass:FuelFab"), config, simdur);
+  cyclus::MockSim sim(cyclus::AgentSpec(":cybca:FuelFab"), config, simdur);
   sim.AddSource("uox").capacity(1).Finalize();
   sim.AddSource("spentuox").capacity(1).Finalize();
   sim.AddSource("natu").capacity(1).Finalize();
@@ -239,7 +239,7 @@ TEST(FuelFabTests, FillAllInventories) {
      ;
 
   int simdur = 10;
-  cyclus::MockSim sim(cyclus::AgentSpec(":cyclass:FuelFab"), config, simdur);
+  cyclus::MockSim sim(cyclus::AgentSpec(":cybca:FuelFab"), config, simdur);
   sim.AddSource("uox").capacity(1).Finalize();
   sim.AddSource("spentuox").capacity(1).Finalize();
   sim.AddSource("natu").capacity(1).Finalize();
@@ -279,7 +279,7 @@ TEST(FuelFabTests, FillAllInventories) {
      "<throughput>100</throughput>"
      ;
   int simdur = 6;
-  cyclus::MockSim sim(cyclus::AgentSpec(":cyclass:FuelFab"), config, simdur);
+  cyclus::MockSim sim(cyclus::AgentSpec(":cybca:FuelFab"), config, simdur);
   sim.AddSource("anything").Finalize();
   sim.AddSink("recyclefuel").recipe("spentuox").capacity(100).Finalize();
   sim.AddRecipe("uox", c_uox());
@@ -309,7 +309,7 @@ TEST(FuelFabTests, FillAllInventories) {
      "<throughput>100</throughput>"
      ;
   int simdur = 6;
-  cyclus::MockSim sim(cyclus::AgentSpec(":cyclass:FuelFab"), config, simdur);
+  cyclus::MockSim sim(cyclus::AgentSpec(":cybca:FuelFab"), config, simdur);
   sim.AddSource("anything").Finalize();
   sim.AddSink("recyclefuel").recipe("natu").capacity(100).Finalize();
   sim.AddRecipe("uox", c_uox());
@@ -343,7 +343,7 @@ TEST(FuelFabTests, ThroughputLimit) {
   double throughput = 3;
 
   int simdur = 5;
-  cyclus::MockSim sim(cyclus::AgentSpec(":cyclass:FuelFab"), config, simdur);
+  cyclus::MockSim sim(cyclus::AgentSpec(":cybca:FuelFab"), config, simdur);
   sim.AddSource("anything").lifetime(1).Finalize();
   sim.AddSink("recyclefuel").recipe("uox").capacity(2*throughput).Finalize();
   sim.AddRecipe("uox", c_uox());
@@ -404,7 +404,7 @@ TEST(FuelFabTests, ThroughputLimit) {
   Composition::Ptr c = Composition::CreateFromMass(m);
 
   int simdur = 5;
-  cyclus::MockSim sim(cyclus::AgentSpec(":cyclass:FuelFab"), config, simdur);
+  cyclus::MockSim sim(cyclus::AgentSpec(":cybca:FuelFab"), config, simdur);
   sim.AddSource("stream1").start(0).lifetime(1).capacity(.01).recipe("special").Finalize();
   sim.AddSource("stream1").start(1).lifetime(1).capacity(3.98).recipe("natu").Finalize();
   sim.AddSource("natu").lifetime(1).Finalize();
@@ -418,6 +418,6 @@ TEST(FuelFabTests, ThroughputLimit) {
 }*/
 
 } // namespace fuelfabtests
-} // namespace cyclass
+} // namespace cybca
 
 

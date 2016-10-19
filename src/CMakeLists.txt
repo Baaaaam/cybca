@@ -1,12 +1,12 @@
 ### DO NOT DELETE THIS COMMENT: INSERT_ARCHETYPES_HERE ###
 
 
-USE_CYCLUS("cyclass" "CLASSAdaptator")
-USE_CYCLUS("cyclass" "fuel_fab")
-USE_CYCLUS("cyclass" "reactor")
+USE_CYCLUS("cybca" "CLASSAdaptator")
+USE_CYCLUS("cybca" "fuel_fab")
+USE_CYCLUS("cybca" "reactor")
 
-INSTALL_CYCLUS_MODULE("cyclass" "./")
+INSTALL_CYCLUS_MODULE("cybca" "./")
 
 # install header files
 FILE(GLOB h_files "${CMAKE_CURRENT_SOURCE_DIR}/*.h")
-INSTALL(FILES ${h_files} DESTINATION include/cyclass COMPONENT cyclass)
+INSTALL(FILES ${h_files} DESTINATION include/cybca COMPONENT cybca)

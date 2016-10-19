@@ -24,7 +24,7 @@ typedef std::map<Nuc, double> CompMap;
 
 
 
-namespace cyclass {
+namespace cybca {
 
 
     class CLASSAdaptator {
@@ -98,6 +98,6 @@ namespace cyclass {
 
 
 
-} // namespace cyclass
+} // namespace cybca
 
-#endif  // cyclass_SRC_FUEL_FAB_H_
+#endif  // cybca_SRC_FUEL_FAB_H_
