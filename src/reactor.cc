@@ -408,7 +408,10 @@ namespace cybca {
       cyDBGL
       cyclus::Composition::Ptr compo = old[i]->comp();
       cyDBGL
-      old[i]->Transmute( MyCLASSAdaptator->GetCompAfterIrradiation( compo, power, mass * over_discharge , burnup)  );
+      Composition::Ptr fuel_compo =  MyCLASSAdaptator->GetCompAfterIrradiation( compo, power, mass , burnup);
+      Material::Ptr extra_mat = Material::Create(this, mass * (over_discharge-1),  fuel_compo);
+      old[i]->Transmute( fuel_compo  );
+      old[i]->Absorb(extra_mat);
       cyDBGL
     }
     cyDBGL
